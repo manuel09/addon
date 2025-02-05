@@ -104,11 +104,11 @@ def update(path, p_dialog, i, t, serie, overwrite):
 
         else:
             logger.debug("Channel %s not active is not updated" % serie.channel)
-    # Synchronize the episodes seen from the Kodi video library with that of KoD
+    # Synchronize the episodes seen from the Kodi video library with that of S4Me
     try:
         if config.is_xbmc():                # If it's Kodi, we do it
             from platformcode import xbmc_videolibrary
-            xbmc_videolibrary.mark_content_as_watched_on_kod(filetools.join(path,'tvshow.nfo'))
+            xbmc_videolibrary.mark_content_as_watched_on_addon(filetools.join(path, 'tvshow.nfo'))
     except:
         logger.error(traceback.format_exc())
 
@@ -180,7 +180,7 @@ def check_for_update(overwrite=True):
                         try:
                             if config.is_xbmc():                # If it's Kodi, we do it
                                 from platformcode import xbmc_videolibrary
-                                xbmc_videolibrary.mark_content_as_watched_on_kod(filetools.join(path,'tvshow.nfo'))
+                                xbmc_videolibrary.mark_content_as_watched_on_addon(filetools.join(path, 'tvshow.nfo'))
                         except:
                             logger.error(traceback.format_exc())
 
@@ -421,7 +421,7 @@ class AddonMonitor(xbmc.Monitor):
             db['OnPlay']['addon'] = False
             db.close()
         elif method == 'VideoLibrary.OnUpdate':
-            xbmc_videolibrary.set_watched_on_kod(data)
+            xbmc_videolibrary.set_watched_on_addon(data)
             logger.debug('AGGIORNO')
 
     def onScreensaverActivated(self):
@@ -465,7 +465,7 @@ class AddonMonitor(xbmc.Monitor):
 
 
 if __name__ == "__main__":
-    logger.info('Starting KoD service')
+    logger.info('Starting S4Meservice')
 
     # Test if all the required directories are created
     config.verify_directories_created()
@@ -557,11 +557,11 @@ if __name__ == "__main__":
             break
 
         if monitor.waitForAbort(1): # every second
-            logger.debug('KoD service EXIT')
+            logger.debug('S4Meservice EXIT')
             # db need to be closed when not used, it will cause freezes
             join_threads()
             logger.debug('Close Threads')
             db.close()
             logger.debug('Close DB')
             break
-    logger.debug('KoD service STOPPED')
+    logger.debug('S4Meservice STOPPED')

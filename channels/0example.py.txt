@@ -116,7 +116,7 @@ def mainlist(item):
     # search per ogni voce del menu. Es. Cerca Film...
     search = '' # se alla funzione search non serve altro
 
-    # VOCE CHE APPARIRA' come prima voce nel menu di KOD!
+    # VOCE CHE APPARIRA' come prima voce nel menu di S4Me!
     # [Voce Menu,['url','action','args',contentType]
     top = ([ '' ['', '', '', ''])
 

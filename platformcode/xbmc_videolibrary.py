@@ -350,7 +350,7 @@ def mark_season_as_watched_on_kodi(item, value=1):
 
     execute_sql_kodi(sql)
 
-def set_watched_on_kod(data):
+def set_watched_on_addon(data):
     from specials import videolibrary
     from core import videolibrarytools
     data = jsontools.load(data)
@@ -387,7 +387,7 @@ def set_watched_on_kod(data):
                                 item = videolibrary.check_season_playcount(item, season_num)
                                 filetools.write(path, head_nfo + item.tojson())
 
-def mark_content_as_watched_on_kod(path):
+def mark_content_as_watched_on_addon(path):
     from specials import videolibrary
     from core import videolibrarytools
 
