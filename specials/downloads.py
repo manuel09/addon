@@ -252,7 +252,7 @@ def restart_error(item):
 def download_all(item):
     time.sleep(0.5)
     item.action = "download_all_background"
-    xbmc.executebuiltin("RunPlugin(plugin://plugin.video.kod/?" + item.tourl() + ")")
+    xbmc.executebuiltin("RunPlugin(plugin://plugin.video.s4me/?" + item.tourl() + ")")
     platformtools.itemlist_refresh()
 
 
@@ -328,7 +328,7 @@ def menu(item):
     # Start Download
     if opciones[seleccion] == op[0]:
         item.action = "start_download"
-        xbmc.executebuiltin("RunPlugin(plugin://plugin.video.kod/?" + item.tourl() + ")")
+        xbmc.executebuiltin("RunPlugin(plugin://plugin.video.s4me/?" + item.tourl() + ")")
 
     # Select Server
     if opciones[seleccion] == op[3]:
@@ -967,7 +967,7 @@ def save_download(item):
 
     item.channel = "downloads"
     item.action = "save_download_background"
-    xbmc.executebuiltin("RunPlugin(plugin://plugin.video.kod/?" + item.tourl() + ")")
+    xbmc.executebuiltin("RunPlugin(plugin://plugin.video.s4me/?" + item.tourl() + ")")
 
 
 def save_download_background(item):
@@ -1025,7 +1025,7 @@ def save_download_videolibrary(item):
     item.contentChannel = 'videolibrary'
     item.channel = "downloads"
     item.action = "save_download_background"
-    xbmc.executebuiltin("RunPlugin(plugin://plugin.video.kod/?" + item.tourl() + ")")
+    xbmc.executebuiltin("RunPlugin(plugin://plugin.video.s4me/?" + item.tourl() + ")")
 
 
 def save_download_video(item):

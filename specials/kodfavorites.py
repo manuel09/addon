@@ -442,7 +442,7 @@ def editar_enlace_thumbnail(item):
     # except:
     #     pass
 
-    resource_path = 'https://api.github.com/repos/kodiondemand/media/git/trees/b36040432b9be120f04e986277fd34f09dcdb4db'
+    resource_path = 'https://api.github.com/repos/Stream4me/media/git/trees/b36040432b9be120f04e986277fd34f09dcdb4db'
     for f in sorted(requests.get(resource_path).json().get('tree', []), key=lambda p: p.get('path')):
         nombre = f['path'].replace('thumb_', '').replace('.png', '')
         it_thumb = xbmcgui.ListItem(nombre)

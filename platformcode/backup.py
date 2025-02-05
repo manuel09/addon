@@ -14,8 +14,8 @@ from specials import videolibrary
 PY3 = False
 if sys.version_info[0] >= 3: PY3 = True; unicode = str; unichr = chr; long = int
 
-temp_path = unicode(xbmc.translatePath("special://userdata/addon_data/plugin.video.kod/temp/"))
-videolibrary_temp_path = unicode(xbmc.translatePath("special://userdata/addon_data/plugin.video.kod/temp/videolibrary"))
+temp_path = unicode(xbmc.translatePath("special://userdata/addon_data/plugin.video.s4me/temp/"))
+videolibrary_temp_path = unicode(xbmc.translatePath("special://userdata/addon_data/plugin.video.s4me/temp/videolibrary"))
 movies_path = unicode(filetools.join(videolibrary_temp_path, "movies"))
 tvshows_path = unicode(filetools.join(videolibrary_temp_path, "tvshows"))
 videolibrary_movies_path = unicode(videolibrarytools.MOVIES_PATH)

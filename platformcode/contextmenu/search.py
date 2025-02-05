@@ -122,9 +122,9 @@ def execute():
     itemurl = item.tourl()
 
     if config.get_setting('new_search'):
-        xbmc.executebuiltin("RunPlugin(plugin://plugin.video.kod/?" + itemurl + ")")
+        xbmc.executebuiltin("RunPlugin(plugin://plugin.video.s4me/?" + itemurl + ")")
     else:
-        xbmc.executebuiltin("Container.Update(plugin://plugin.video.kod/?" + itemurl + ")")
+        xbmc.executebuiltin("Container.Update(plugin://plugin.video.s4me/?" + itemurl + ")")
 
 
 

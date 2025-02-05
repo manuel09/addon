@@ -15,7 +15,7 @@ __version_fix = None
 __dev_mode = None
 
 channels_data = dict()
-changelogFile = xbmc.translatePath("special://profile/addon_data/plugin.video.kod/changelog.txt")
+changelogFile = xbmc.translatePath("special://profile/addon_data/plugin.video.s4me/changelog.txt")
 
 
 def get_addon_core():
@@ -236,7 +236,7 @@ def set_setting(name, value, channel="", server=""):
     Set 'value' as the value of the parameter 'name' in the global configuration or in the own configuration of the channel 'channel'.
     Returns the changed value or None if the assignment could not be completed.
 
-    If the name of the channel is specified, search in the path \ addon_data \ plugin.video.kod \ settings_channels the
+    If the name of the channel is specified, search in the path \ addon_data \ plugin.video.s4me \ settings_channels the
     channel_data.json file and set the parameter 'name' to the value indicated by 'value'. If the file
     channel_data.json does not exist look in the channels folder for the channel.json file and create a channel_data.json file before modifying the 'name' parameter.
     If the parameter 'name' does not exist, it adds it, with its value, to the corresponding file.
@@ -442,7 +442,7 @@ def verify_directories_created():
 
 
 def get_online_server_thumb(server):
-    return "https://raw.github.com/kodiondemand/media/master/resources/servers/" + server.lower().replace('_server','') + '.png'
+    return "https://raw.github.com/Stream4me/media/master/resources/servers/" + server.lower().replace('_server','') + '.png'
 
 
 def get_language():

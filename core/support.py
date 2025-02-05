@@ -513,7 +513,7 @@ def html_uniform(data):
 
 
 def scrape(func):
-    """https://github.com/kodiondemand/addon/wiki/decoratori#scrape"""
+    """https://github.com/stream4me/addon/wiki/decoratori#scrape"""
 
     def wrapper(*args):
         itemlist = []
@@ -811,7 +811,7 @@ def menuItem(itemlist, filename, title='', action='', url='', contentType='undef
 
 
 def menu(func):
-    """https://github.com/kodiondemand/addon/wiki/decoratori#menu"""
+    """https://github.com/stream4me/addon/wiki/decoratori#menu"""
 
     def wrapper(*args):
         args = func(*args)
@@ -1520,7 +1520,7 @@ def thumb(item_itemlist_string=None, genre=False, live=False):
 
     if live:
         def liveThumb(item):
-            thumb = 'https://raw.githubusercontent.com/kodiondemand/media/master/live/{}.png'.format(item.fulltitle.lower().replace(' ','_'))
+            thumb = 'https://raw.githubusercontent.com/Stream4me/media/master/live/{}.png'.format(item.fulltitle.lower().replace(' ','_'))
             if filetools.exists(thumb):
                 item.thumbnail = thumb
         if type(item_itemlist_string) == list:

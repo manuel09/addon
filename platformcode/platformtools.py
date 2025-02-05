@@ -342,9 +342,9 @@ def render_items(itemlist, parent_item):
         item_url = item.tourl()
         if item.thumbnail == parent_item.thumbnail and parent_item.action in ['peliculas', 'search']:
             if item.contentType in ['movie', 'undefined']:
-                item.thumbnail = 'https://raw.githubusercontent.com/kodiondemand/media/master/null/movie.png'
+                item.thumbnail = 'https://raw.githubusercontent.com/Stream4me/media/master/null/movie.png'
             else:
-                item.thumbnail = 'https://raw.githubusercontent.com/kodiondemand/media/master/null/tv.png'
+                item.thumbnail = 'https://raw.githubusercontent.com/Stream4me/media/master/null/tv.png'
         if item.category == "":
             item.category = parent_item.category
         # If there is no action or it is findvideos / play, folder = False because no listing will be returned
@@ -442,7 +442,7 @@ def viewmodeMonitor():
     if get_window() == 'WINDOW_VIDEO_NAV':
         try:
             parent_info = xbmc.getInfoLabel('Container.FolderPath')
-            if 'plugin.video.kod' in parent_info:
+            if 'plugin.video.s4me' in parent_info:
                 parent = Item().fromurl(parent_info, silent=True)
                 item = Item().fromurl(xbmc.getInfoLabel('Container.ListItemPosition(2).FileNameAndPath'), silent=True)
                 currentModeName = xbmc.getInfoLabel('Container.Viewmode')
@@ -1563,7 +1563,7 @@ def add_next_to_playlist(item):
                 nextItem = xbmcgui.ListItem(item_nfo.fulltitle, path=item_nfo.url)
                 nextItem.setArt({"thumb": item_nfo.contentThumbnail if item_nfo.contentThumbnail else item_nfo.thumbnail})
                 set_infolabels(nextItem, item_nfo, True)
-                nexturl = "plugin://plugin.video.kod/?" + next.tourl()
+                nexturl = "plugin://plugin.video.s4me/?" + next.tourl()
                 playlist = xbmc.PlayList(xbmc.PLAYLIST_VIDEO)
                 playlist.add(nexturl, nextItem)
                 add_to_playlist(next)

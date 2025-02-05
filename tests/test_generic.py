@@ -3,7 +3,7 @@
 # and inside .kodi to run tests locally
 # you can pass specific channel name using KOD_TST_CH environment var
 
-# export PYTHONPATH=/home/user/.kodi/addons/plugin.video.kod
+# export PYTHONPATH=/home/user/.kodi/addons/plugin.video.s4me
 # export KOD_TST_CH=channel
 # python tests/test_generic.py
 import html
@@ -21,7 +21,7 @@ if 'KOD_TST_CH' not in os.environ:
     def add_on_info(*args, **kwargs):
         return addoninfo.AddonData(
             kodi_home_path=os.path.join(os.getcwd(), 'tests', 'home'),
-            add_on_id='plugin.video.kod',
+            add_on_id='plugin.video.s4me',
             add_on_path=os.getcwd(),
             kodi_profile_path=os.path.join(os.getcwd(), 'tests', 'home', 'userdata')
         )

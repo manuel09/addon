@@ -709,7 +709,7 @@ msgid "No video to play"
 msgstr ""
 
 msgctxt "#60013"
-msgid "This website [B]%s[/B] seems to be unavailable, try later. if the web page is working correctly, please report the error on: https://github.com/kodiondemand/addon/issues"
+msgid "This website [B]%s[/B] seems to be unavailable, try later. if the web page is working correctly, please report the error on: https://github.com/stream4me/addon/issues"
 msgstr ""
 
 msgctxt "#60014"
@@ -1989,7 +1989,7 @@ msgid "    - Links of interest"
 msgstr ""
 
 msgctxt "#60457"
-msgid "Kodi On Demand"
+msgid "Stream4Me"
 msgstr ""
 
 msgctxt "#60458"

@@ -689,7 +689,7 @@ def move_videolibrary(current_path, new_path, current_movies_folder, new_movies_
             notify = True
         filetools.rmdirtree(current_tvshows_path)
     progress.update(70)
-    if current_path != new_path and not filetools.listdir(current_path) and not "plugin.video.kod\\videolibrary" in current_path:
+    if current_path != new_path and not filetools.listdir(current_path) and not "plugin.video.s4me\\videolibrary" in current_path:
         filetools.rmdirtree(current_path)
 
     xbmc_videolibrary.update_sources(backup_new_path, backup_current_path)
@@ -1077,7 +1077,7 @@ def delete(item):
                         filetools.remove(filetools.join(item.path, episode + '.nfo'))
                         strm_path = filetools.join(item.path, episode + '.strm')
                         # if it is a local episode, do not delete the strm
-                        if 'plugin://plugin.video.kod/?' in filetools.read(strm_path):
+                        if 'plugin://plugin.video.s4me/?' in filetools.read(strm_path):
                             filetools.remove(strm_path)
                             path_list.append(filetools.join(item.extra, episode + '.strm'))
 

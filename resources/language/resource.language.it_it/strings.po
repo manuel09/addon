@@ -708,8 +708,8 @@ msgid "No video to play"
 msgstr "Nessun video da riprodurre"
 
 msgctxt "#60013"
-msgid "This website [B]%s[/B] seems to be unavailable, try later. if the web page is working correctly, please report the error on: https://github.com/kodiondemand/addon/issues"
-msgstr "Il sito [B]%s[/B] non sembra essere disponibile, riprova più tardi. Se la pagina web funziona correttamente segnala l'errore qui: https://github.com/kodiondemand/addon/issues"
+msgid "This website [B]%s[/B] seems to be unavailable, try later. if the web page is working correctly, please report the error on: https://github.com/stream4me/addon/issues"
+msgstr "Il sito [B]%s[/B] non sembra essere disponibile, riprova più tardi. Se la pagina web funziona correttamente segnala l'errore qui: https://github.com/stream4me/addon/issues"
 
 msgctxt "#60014"
 msgid "It may be due to a connection problem, the web page of the channel has changed its structure, or an internal error of KoD. If on browser it works, report the issue using [B]Help->Report an issue.[/B]"

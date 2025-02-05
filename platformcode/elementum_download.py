@@ -11,7 +11,7 @@ setting_path = xbmc.translatePath('special://profile/addon_data/')
 elementum_path = filetools.join(addon_path,'plugin.video.elementum')
 elementum_setting = filetools.join(setting_path,'plugin.video.elementum')
 elementum_setting_file = filetools.join(elementum_setting,'settings.xml')
-kod_setting_file = filetools.join(addon_path,'plugin.video.kod', 'resources', 'settings', 'elementum', 'settings.xml')
+kod_setting_file = filetools.join(addon_path,'plugin.video.s4me', 'resources', 'settings', 'elementum', 'settings.xml')
 
 
 def download(item=None):

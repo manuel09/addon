@@ -550,9 +550,9 @@ if __name__ == "__main__":
             db.close()
             logger.info('Relaunching service.py')
             xbmc.executeJSONRPC(
-                '{"jsonrpc": "2.0", "id":1, "method": "Addons.SetAddonEnabled", "params": { "addonid": "plugin.video.kod", "enabled": false }}')
+                '{"jsonrpc": "2.0", "id":1, "method": "Addons.SetAddonEnabled", "params": { "addonid": "plugin.video.s4me", "enabled": false }}')
             xbmc.executeJSONRPC(
-                '{"jsonrpc": "2.0", "id":1, "method": "Addons.SetAddonEnabled", "params": { "addonid": "plugin.video.kod", "enabled": true }}')
+                '{"jsonrpc": "2.0", "id":1, "method": "Addons.SetAddonEnabled", "params": { "addonid": "plugin.video.s4me", "enabled": true }}')
             logger.debug(threading.enumerate())
             break
 

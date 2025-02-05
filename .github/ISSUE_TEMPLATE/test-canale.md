@@ -35,9 +35,9 @@ Se hai problemi non previsti dal test, segnalali aggiungendoli in fondo al test.
 ***
 I file relativi al canale li trovi:
 - su browser:
-[Apre la pagina dei Canali](https://github.com/kodiondemand/addon/tree/master/channels)
+[Apre la pagina dei Canali](https://github.com/stream4me/addon/tree/master/channels)
 - sul device:
-[nella specifica cartella](https://github.com/kodiondemand/addon/wiki/Percorsi-sui-diversi-S.O.) , .kodi/addons/channels.
+[nella specifica cartella](https://github.com/stream4me/addon/wiki/Percorsi-sui-diversi-S.O.) , .kodi/addons/channels.
 Per aprirli non servono programmi particolari un semplice editor di testo è sufficiente.
 
 **Test N.1**: Controllo del file .json

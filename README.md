@@ -1,4 +1,4 @@
-# Kodi On Demand
+# Stream4Me
 ### Un fork italiano di [Alfa](https://github.com/alfa-addon)
 
 Installazione: https://kodiondemand.github.io/#download
@@ -9,5 +9,5 @@ KoD, come Alfa, è sotto licenza GPL v3, pertanto siete liberi di utilizzare par
 - Aggiungere i crediti a tutto ciò che copiate/modificate, ad esempio aggiungendo un commento nel file in questione o, meglio, facendo un cherry-pick (in modo da preservarne lo storico)
 
 ### Come contribuire o fare segnalazioni?
-Ti piace il progetto e vuoi dare una mano? Leggi [qui](https://github.com/kodiondemand/addon/blob/master/CONTRIBUTING.md)
+Ti piace il progetto e vuoi dare una mano? Leggi [qui](https://github.com/stream4me/addon/blob/master/CONTRIBUTING.md)
 
