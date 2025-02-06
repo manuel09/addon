@@ -7,7 +7,7 @@ import sys, os, xbmc, xbmcaddon
 PY3 = False
 if sys.version_info[0] >= 3: PY3 = True; unicode = str; unichr = chr; long = int
 
-PLUGIN_NAME = "kod"
+PLUGIN_NAME = "s4me"
 
 __settings__ = xbmcaddon.Addon(id="plugin.video." + PLUGIN_NAME)
 __language__ = __settings__.getLocalizedString
@@ -74,15 +74,15 @@ def get_platform(full_version=False):
     codename = {"10": "dharma", "11": "eden", "12": "frodo",
                 "13": "gotham", "14": "helix", "15": "isengard",
                 "16": "jarvis", "17": "krypton", "18": "leia", 
-                "19": "matrix", '20': 'nexus'}
+                "19": "matrix", '20': 'nexus', '21': 'omega'}
     video_db = {'10': 'MyVideos37.db', '11': 'MyVideos60.db', '12': 'MyVideos75.db',
                '13': 'MyVideos78.db', '14': 'MyVideos90.db', '15': 'MyVideos93.db',
                '16': 'MyVideos99.db', '17': 'MyVideos107.db', '18': 'MyVideos116.db', 
-               '19': 'MyVideos119.db', '20': 'MyVideos120.db'}
+               '19': 'MyVideos119.db', '20': 'MyVideos120.db', '21': 'MyVideos131.db'}
     view_db = {'10': 'ViewModes1.db', '11': 'ViewModes4.db', '12': 'ViewModes4.db',
                '13': 'ViewModes6.db', '14': 'ViewModes6.db', '15': 'ViewModes6.db',
                '16': 'ViewModes6.db', '17': 'ViewModes6.db', '18': 'ViewModes6.db', 
-               '19': 'ViewModes6.db', '20': 'ViewModes6.db'}
+               '19': 'ViewModes6.db', '20': 'ViewModes6.db', '21': 'ViewModes6.db'}
 
     num_version = xbmc.getInfoLabel('System.BuildVersion')
     num_version = re.match("\d+\.\d+", num_version).group(0)

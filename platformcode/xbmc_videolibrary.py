@@ -1095,7 +1095,6 @@ def check_sources(new_movies_path='', new_tvshows_path=''):
 
 
 def update_sources(new='', old=''):
-    logger.debug()
     if new == old: return
 
     SOURCES_PATH = xbmc.translatePath("special://userdata/sources.xml")
@@ -1152,7 +1151,7 @@ def update_sources(new='', old=''):
         name = new
         if new.endswith(sep):
             name = new[:-1]
-        name_node.appendChild(xmldoc.createTextNode(name.rsplit(sep)[-1]))
+        name_node.appendChild(xmldoc.createTextNode(name.rsplit(sep)[-1]+ '-' + config.PLUGIN_NAME))
         source_node.appendChild(name_node)
 
         # <path> Node
@@ -1179,7 +1178,6 @@ def update_sources(new='', old=''):
 
 def ask_set_content(silent=False):
     # from core.support import dbg;dbg()
-    logger.debug()
     logger.debug("videolibrary_kodi %s" % config.get_setting("videolibrary_kodi"))
     def do_config(custom=True):
         if set_content("movie", True, custom) and set_content("tvshow", True, custom):
