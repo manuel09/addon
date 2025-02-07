@@ -10,11 +10,11 @@ from core import tmdb
 from core.item import Item
 
 addon_id = config.get_addon_core().getAddonInfo('id')
-global item_is_coming_from_kod
+global item_is_coming_from_addon
 
 
 def check_condition():
-    global item_is_coming_from_kod
+    global item_is_coming_from_addon
     logger.debug('check item condition')
     mediatype = xbmc.getInfoLabel('ListItem.DBTYPE')
 
@@ -27,14 +27,14 @@ def check_condition():
     logger.debug('filenamepath:', fileNameAndPath )
     logger.info('filepath:', filePath )
     
-    item_is_coming_from_kod = addon_id in filePath
-    if not item_is_coming_from_kod:
+    item_is_coming_from_addon = addon_id in filePath
+    if not item_is_coming_from_addon:
         videolibpath = config.get_setting("videolibrarypath")
         if filePath.startswith(videolibpath):
             pattern = re.compile("\[.*\][\\\/]?$")
-            item_is_coming_from_kod = pattern.search(filePath)
+            item_is_coming_from_addon = pattern.search(filePath)
 
-    if item_is_coming_from_kod:
+    if item_is_coming_from_addon:
         logger.debug("item IS already managed by S4Me")
 
     return mediatype
@@ -43,7 +43,7 @@ def check_condition():
 def get_menu_items():
     logger.debug('get menu item')
     if check_condition():
-        return [(config.get_localized_string(90003 if item_is_coming_from_kod else 90005), execute)]
+        return [(config.get_localized_string(90003 if item_is_coming_from_addon else 90005), execute)]
     else:
         return []
 

@@ -35,7 +35,7 @@
     <category label="30131">
         <setting label="30501" type="lsep"/>
         <!-- <setting id="videolibrarypath" type="action" label="30067" action="RunPlugin(plugin://plugin.video.s4me/?ew0KCSJjaGFubmVsIjoibW92ZV92aWRlb2xpYnJhcnkiLA0KCSJhY3Rpb24iOiJzZXRfdmlkZW9saWJyYXJ5X3BhdGgiDQp9)" default="special://profile/addon_data/plugin.video.s4me/videolibrary"/> -->
-        <setting id="videolibrarypath" type="folder" label="30067" default="special://profile/addon_data/plugin.video.s4me/videolibrary/" option="writeable"/>
+        <setting id="videolibrarypath" type="folder" label="30067" default="" option="writeable"/>
         <setting id="folder_tvshows" type="text" label="70118" default="Serie TV"/>
         <setting id="folder_movies" type="text" label="70119" default="Film"/>
         <setting id="videolibrary_kodi" type="bool" label="70120" default="false"/>
@@ -98,16 +98,16 @@
         <setting id="tmdb_cache" type="bool" label="70157" default="true"/>
         <setting id="tmdb_cache_expire" type="select" lvalues="70158|70159|70160|70161|70170" label="70162" enable="eq(-1,true)" default="4"/>
         <setting id="tmdb_clean_db_cache" type="action" label="70163" action="RunPlugin(plugin://plugin.video.s4me/?ew0KICAgICJhY3Rpb24iOiAic2NyaXB0Ig0KfQ==)" />
-        <setting label="Lista activa" type="text" id="lista_activa" default="kodfavorites-default.json" visible="false"/>
+        <setting label="Lista activa" type="text" id="lista_activa" default="addonfavorites-default.json" visible="false"/>
     </category>
 
     <!-- Downloads -->
     <category label="30153">
         <setting id="downloadenabled" type="bool" label="70689" default="false"/>
-        <setting id="downloadpath" type="folder" label="30017" visible="eq(-1,true)" default="special://profile/addon_data/plugin.video.s4me/downloads/" option="writeable"/>
+        <setting id="downloadpath" type="folder" label="30017" visible="eq(-1,true)" default="" option="writeable"/>
         <!-- <setting id="library_add" type="bool" label="70230" default="false"/>
         <setting id="library_move" type="bool" label="70231" default="false" visible="eq(-1,true)" subsetting="true"/> -->
-        <setting id="downloadlistpath" type="folder" label="30018" visible="eq(-2,true)" default="special://profile/addon_data/plugin.video.s4me/downloads/list/" option="writeable"/>
+        <setting id="downloadlistpath" type="folder" label="30018" visible="eq(-2,true)" default="" option="writeable"/>
         <setting id="library_move" type="bool" label="70231" visible="eq(-3,true)" default="true"/>
         <setting id="browser" type="bool" label="70232" visible="eq(-4,true)" default="true"/>
         <setting id="server_speed" type="bool" label="70242" visible="eq(-5,true)" default="true"/>
@@ -156,7 +156,7 @@
         <setting label="30024" type="lsep"/>
         <setting id="quick_menu" type="bool" label="60360" default="true"/>
         <!-- <setting id="side_menu" type="bool" label="70737" default="false"/> -->
-<!--        <setting id="kod_menu" type="bool" label="60026" default="true"/>-->
+<!--        <setting id="s4me_menu" type="bool" label="60026" default="true"/>-->
         <setting id="infoplus" type="bool" label="70151" default="false"/>
         <!-- <setting id="infoplus_set" type="bool" label="70128" visible="eq(-1,true)" default="false" subsetting="true"/> -->
         <!-- <setting id="extended_info" type="bool" label="70152" default="false"/> -->

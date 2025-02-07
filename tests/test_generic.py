@@ -317,7 +317,7 @@ class GenericChannelMenuItemTest(unittest.TestCase):
         if self.ch in chNumRis:  # i know how much results should be
             for content in chNumRis[self.ch]:
                 if content in self.title:
-                    risNum = len([i for i in self.itemlist if i.title != typo(config.get_localized_string(30992), 'color kod bold')])  # not count nextpage
+                    risNum = len([i for i in self.itemlist if i.title != typo(config.get_localized_string(30992), 'color std bold')])  # not count nextpage
                     if 'Search' not in self.title:
                         self.assertEqual(chNumRis[self.ch][content], risNum,
                                          'channel ' + self.ch + ' -> ' + self.title + ' returned wrong number of results<br>'
@@ -339,7 +339,7 @@ class GenericChannelMenuItemTest(unittest.TestCase):
                 self.assert_(type(resIt.infoLabels['year']) is int or resIt.infoLabels['year'].isdigit(), msgYear)
                 self.assert_(1900 < int(resIt.infoLabels['year']) < 2100, msgYear)
 
-            if resIt.title == typo(config.get_localized_string(30992), 'color kod bold'):  # next page
+            if resIt.title == typo(config.get_localized_string(30992), 'color std bold'):  # next page
                 nextPageItemlist = getattr(self.module, resIt.action)(resIt)
                 self.assertTrue(nextPageItemlist,
                                 'channel ' + self.ch + ' -> ' + self.title + ' has nextpage not working')

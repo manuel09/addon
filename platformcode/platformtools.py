@@ -692,7 +692,7 @@ def set_context_commands(item, item_url, parent_item, **kwargs):
                 context_commands.append((command["title"], "Container.Refresh (%s?%s)" % (sys.argv[0], item.clone(**command).tourl())))
             else:
                 context_commands.append((command["title"], "RunPlugin(%s?%s)" % (sys.argv[0], item.clone(**command).tourl())))
-    # Do not add more predefined options if you are inside kodfavoritos
+    # Do not add more predefined options if you are inside addonfavoritos
     if parent_item.channel == 'addonfavorites':
         if config.dev_mode():
             context_commands.insert(0, ("item info", "Container.Update (%s?%s)" % (sys.argv[0], Item(action="itemInfo", parent=item.tojson()).tourl())))
@@ -725,11 +725,11 @@ def set_context_commands(item, item_url, parent_item, **kwargs):
         if (item.contentTitle and item.contentType in ['movie', 'tvshow']) or "buscar_trailer" in context:
             context_commands.append((config.get_localized_string(60359), "RunPlugin(%s?%s&%s)" % (sys.argv[0], item_url, urllib.urlencode({ 'channel': "trailertools", 'action': "buscartrailer", 'search_title': item.contentTitle if item.contentTitle else item.fulltitle, 'contextual': True}))))
 
-        # Add to kodfavoritos (My links)
+        # Add to addonfavoritos (My links)
         if item.channel not in ["favorites", "videolibrary", "help", ""] and parent_item.channel != "favorites" and parent_item.from_channel != "addonfavorites":
             context_commands.append( (config.get_localized_string(70557), "RunPlugin(%s?%s&%s)" % (sys.argv[0], item_url, urllib.urlencode({'channel': "addonfavorites", 'action': "addFavourite", 'from_channel': item.channel, 'from_action': item.action}))))
 
-        # Add to kodfavoritos
+        # Add to addonfavoritos
         if parent_item.channel == 'globalsearch':
             context_commands.append( (config.get_localized_string(30155), "RunPlugin(%s?%s&%s)" % (sys.argv[0], item_url, urllib.urlencode({'channel': "favorites", 'action': "addFavourite", 'from_channel': item.channel, 'from_action': item.action}))))
 
@@ -1813,7 +1813,7 @@ def prevent_busy():
 
 def fakeVideo(sleep = False):
     if len(sys.argv) > 1:
-        mediaurl = os.path.join(config.get_runtime_path(), "resources", "kod.mp4")
+        mediaurl = os.path.join(config.get_runtime_path(), "resources", "fakevideo.mp4")
         xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, xbmcgui.ListItem(path=mediaurl))
         while not is_playing():
             xbmc.sleep(200)

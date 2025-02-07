@@ -1949,7 +1949,7 @@ msgstr "FILTRO SALVATO"
 
 msgctxt "#60447"
 msgid "Guide (opens the browser)"
-msgstr "Guida alle funzioni di S4Me(apre il browser)"
+msgstr "Guida alle funzioni di S4Me (apre il browser)"
 
 msgctxt "#60448"
 msgid "    - How do I report an error?"
@@ -3320,8 +3320,8 @@ msgid "Movies folder"
 msgstr "Cartella film"
 
 msgctxt "#70120"
-msgid "Add S4Mecontents to Kodi video library"
-msgstr "Aggiungi la videoteca di S4Mealla libreria di Kodi"
+msgid "Add S4Me contents to Kodi video library"
+msgstr "Aggiungi la videoteca di S4Me alla libreria di Kodi"
 
 msgctxt "#70121"
 msgid "Activate"
@@ -5492,8 +5492,8 @@ msgid "Use the context menu to define one"
 msgstr "Usa il menu contestuale per aggiungerne una"
 
 msgctxt "#70667"
-msgid "S4Meis already updated"
-msgstr "S4Meè già aggiornato"
+msgid "S4Me is already updated"
+msgstr "S4Me è già aggiornato"
 
 msgctxt "#70668"
 msgid "There is no urgent update"
@@ -5644,8 +5644,8 @@ msgid "Use your custom channel URLs"
 msgstr "Utilizza URL personalizzati per i canali"
 
 msgctxt "#70706"
-msgid "Launch S4Meat Kodi start"
-msgstr "Esegui S4Meall'avvio di Kodi"
+msgid "Launch S4Me at Kodi start"
+msgstr "Esegui S4Me all'avvio di Kodi"
 
 msgctxt "#70707"
 msgid "Enable"

@@ -25,6 +25,6 @@ jobs:
         with:
           source_file: 'reports'
           destination_repo: 'stream4me/stream4me.github.io'
-          user_email: 'tests@kod.bot'
+          user_email: 'tests@s4me.bot'
           user_name: 'bot'
           commit_message: 'Test suite'

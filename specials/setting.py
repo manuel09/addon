@@ -721,9 +721,9 @@ def restore_tools(item):
             head_nfo, serie = videolibrarytools.read_nfo(tvshow_file)
             path = filetools.dirname(tvshow_file)
 
-            if not serie.active:
+            #if not serie.active:
                 # if the series is not active discard
-                continue
+            #    continue
 
             # We delete the folder with the series ...
             if tvshow_file.endswith('.strm') or tvshow_file.endswith('.json') or tvshow_file.endswith('.nfo'):

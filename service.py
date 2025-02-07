@@ -43,7 +43,7 @@ def update(path, p_dialog, i, t, serie, overwrite):
     head_nfo, it = videolibrarytools.read_nfo(nfo_file)
     videolibrarytools.update_renumber_options(it, head_nfo, path)
 
-    if not serie.library_url: serie = it
+    if not serie.library_urls: serie = it
     category = serie.category
 
     # logger.debug("%s: %s" %(serie.contentSerieName,str(list_canales) ))
@@ -81,7 +81,7 @@ def update(path, p_dialog, i, t, serie, overwrite):
                 try:
                     if int(overwrite) == 3:
                         # Overwrite all files (tvshow.nfo, 1x01.nfo, 1x01 [channel] .json, 1x01.strm, etc ...)
-                        insertados, sobreescritos, fallidos, notusedpath = videolibrarytools.save_tvshow(serie, itemlist)
+                        insertados, sobreescritos, fallidos, notusedpath = videolibrarytools.save_tvshow(serie, itemlist, override_active = True)
                         #serie= videolibrary.check_season_playcount(serie, serie.contentSeason)
                         #if filetools.write(path + '/tvshow.nfo', head_nfo + it.tojson()):
                         #    serie.infoLabels['playcount'] = serie.playcount
