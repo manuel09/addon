@@ -685,7 +685,7 @@ def set_context_commands(item, item_url, parent_item, **kwargs):
 
             # If you are not inside Alphavorites and there are the contexts for Alphavorites, discard them.
             # (it happens when going to a link of alfavoritos, if this is cloned in the channel)
-            if parent_item.channel != 'kodfavorites' and 'i_perfil' in command and 'i_enlace' in command:
+            if parent_item.channel != 'addonfavorites' and 'i_perfil' in command and 'i_enlace' in command:
                 continue
 
             if "goto" in command:
@@ -693,7 +693,7 @@ def set_context_commands(item, item_url, parent_item, **kwargs):
             else:
                 context_commands.append((command["title"], "RunPlugin(%s?%s)" % (sys.argv[0], item.clone(**command).tourl())))
     # Do not add more predefined options if you are inside kodfavoritos
-    if parent_item.channel == 'kodfavorites':
+    if parent_item.channel == 'addonfavorites':
         if config.dev_mode():
             context_commands.insert(0, ("item info", "Container.Update (%s?%s)" % (sys.argv[0], Item(action="itemInfo", parent=item.tojson()).tourl())))
         return context_commands
@@ -726,8 +726,8 @@ def set_context_commands(item, item_url, parent_item, **kwargs):
             context_commands.append((config.get_localized_string(60359), "RunPlugin(%s?%s&%s)" % (sys.argv[0], item_url, urllib.urlencode({ 'channel': "trailertools", 'action': "buscartrailer", 'search_title': item.contentTitle if item.contentTitle else item.fulltitle, 'contextual': True}))))
 
         # Add to kodfavoritos (My links)
-        if item.channel not in ["favorites", "videolibrary", "help", ""] and parent_item.channel != "favorites" and parent_item.from_channel != "kodfavorites":
-            context_commands.append( (config.get_localized_string(70557), "RunPlugin(%s?%s&%s)" % (sys.argv[0], item_url, urllib.urlencode({'channel': "kodfavorites", 'action': "addFavourite", 'from_channel': item.channel, 'from_action': item.action}))))
+        if item.channel not in ["favorites", "videolibrary", "help", ""] and parent_item.channel != "favorites" and parent_item.from_channel != "addonfavorites":
+            context_commands.append( (config.get_localized_string(70557), "RunPlugin(%s?%s&%s)" % (sys.argv[0], item_url, urllib.urlencode({'channel': "addonfavorites", 'action': "addFavourite", 'from_channel': item.channel, 'from_action': item.action}))))
 
         # Add to kodfavoritos
         if parent_item.channel == 'globalsearch':

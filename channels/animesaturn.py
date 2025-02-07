@@ -13,15 +13,15 @@ cookie = support.config.get_setting('cookie', __channel__)
 headers = {'X-Requested-With': 'XMLHttpRequest', 'Cookie': cookie}
 
 
-def get_cookie(data):
+def get_cookie(data, cookie_name):
     global cookie, headers
     a = support.match(data, patron=r'a=toNumbers\("([^"]+?)"\)').match 
     b = support.match(data, patron=r'b=toNumbers\("([^"]+?)"\)').match 
     c = support.match(data, patron=r'c=toNumbers\("([^"]+?)"\)').match
-    
+
     aes = pyaes.AESModeOfOperationCBC(bytes.fromhex(a), iv = bytes.fromhex(b))
-    
-    cookie = "ASNew-9v=" + aes.decrypt(bytes.fromhex(c)).hex()
+
+    cookie = cookie_name + "=" + aes.decrypt(bytes.fromhex(c)).hex()
     logger.debug("cookie = " + cookie)
     support.config.set_setting('cookie', cookie, __channel__)
     headers = [['Cookie', cookie]]
@@ -29,8 +29,9 @@ def get_cookie(data):
 
 def get_data(url):
     data = support.match(url, headers=headers, follow_redirects=True).data
-    if 'ASNew-9v' in data:
-        get_cookie(data)
+    cookie_name = support.match(data, patron=r'cookie="(.*?)="\+toHex\(slowAES').match
+    if cookie_name:
+        get_cookie(data, cookie_name)
         data = get_data(url)
     return data
 

@@ -33,7 +33,7 @@ def getmainlist(view="thumb_"):
                              thumbnail=get_thumb("on_the_air.png"), viewmode="thumbnails"))
 
     if addon.getSetting('enable_link_menu') == "true":
-        itemlist.append(Item(title=config.get_localized_string(70527), channel="kodfavorites", action="mainlist", thumbnail=get_thumb("mylink.png", view),
+        itemlist.append(Item(title=config.get_localized_string(70527), channel="addonfavorites", action="mainlist", thumbnail=get_thumb("mylink.png", view),
                              view=view, category=config.get_localized_string(70527), viewmode="thumbnails"))
 
     if addon.getSetting('enable_fav_menu') == "true":
