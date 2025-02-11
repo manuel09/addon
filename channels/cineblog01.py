@@ -126,7 +126,7 @@ def peliculas(item):
     def itemHook(item):
         if item.quality2:
             item.quality = item.quality2
-            item.title += support.typo(item.quality2, '_ [] color kod')
+            item.title += support.typo(item.quality2, '_ [] color std')
         return item
 
     return locals()

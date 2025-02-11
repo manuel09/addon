@@ -474,7 +474,7 @@ if __name__ == "__main__":
         xbmc.executebuiltin('RunAddon(plugin.video.' + config.PLUGIN_NAME + ')')
 
     # port old db to new
-    old_db_name = filetools.join(config.get_data_path(), "kod_db.sqlite")
+    old_db_name = filetools.join(config.get_data_path(), "s4me_db.sqlite")
     if filetools.isfile(old_db_name):
         try:
             import sqlite3

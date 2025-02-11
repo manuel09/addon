@@ -134,7 +134,7 @@ def peliculas(item):
             action = 'findvideos'
             def itemlistHook(itemlist):
                 if page:
-                    itemlist.append(item.clone(title=support.typo(support.config.get_localized_string(30992), 'color kod bold'),page= page, thumbnail=support.thumb()))
+                    itemlist.append(item.clone(title=support.typo(support.config.get_localized_string(30992), 'color std bold'),page= page, thumbnail=support.thumb()))
                 return itemlist
         elif 'filter' in item.args:
             page = support.match(data, patron=r'totalPages:\s*(\d+)').match
@@ -143,7 +143,7 @@ def peliculas(item):
                 if item.nextpage: item.nextpage += 1
                 else: item.nextpage = 2
                 if page and item.nextpage < int(page):
-                    itemlist.append(item.clone(title=support.typo(support.config.get_localized_string(30992), 'color kod bold'), url= '{}&page={}'.format(item.url, item.nextpage), infoLabels={}, thumbnail=support.thumb()))
+                    itemlist.append(item.clone(title=support.typo(support.config.get_localized_string(30992), 'color std bold'), url= '{}&page={}'.format(item.url, item.nextpage), infoLabels={}, thumbnail=support.thumb()))
                 return itemlist
 
         else:

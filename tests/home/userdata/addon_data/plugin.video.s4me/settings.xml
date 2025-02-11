@@ -45,11 +45,11 @@
     <setting id="infoplus" default="true">false</setting>
     <setting id="infoplus_set" default="true">false</setting>
     <setting id="install_trakt" default="true">true</setting>
-    <setting id="kod_menu">true</setting>
+    <setting id="s4me_menu">true</setting>
     <setting id="language" default="true">ITA</setting>
     <setting id="last_search">true</setting>
     <setting id="library_move">true</setting>
-    <setting id="lista_activa" default="true">kodfavorites-default.json</setting>
+    <setting id="lista_activa" default="true">addonfavorites-default.json</setting>
     <setting id="news_anime" default="true"></setting>
     <setting id="news_documentaries" default="true"></setting>
     <setting id="news_films" default="true"></setting>

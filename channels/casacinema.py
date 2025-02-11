@@ -65,10 +65,10 @@ def peliculas(item):
     def itemHook(item):
         if item.quality1:
             item.quality = item.quality1
-            item.title += support.typo(item.quality, '_ [] color kod')
+            item.title += support.typo(item.quality, '_ [] color std')
         if item.lang2:
             item.contentLanguage = item.lang2
-            item.title += support.typo(item.lang2, '_ [] color kod')
+            item.title += support.typo(item.lang2, '_ [] color std')
         if item.args == 'novita':
             item.title = item.title
 

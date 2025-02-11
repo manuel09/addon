@@ -172,9 +172,9 @@ def peliculas(item):
     if not item.newest:
         item.mainThumb = item.thumbnail
         if recordlist:
-            itemlist.append(item.clone(action='peliculas',title=support.typo(support.config.get_localized_string(30992), 'color kod bold'), thumbnail=support.thumb(), page=page, records=recordlist))
+            itemlist.append(item.clone(action='peliculas',title=support.typo(support.config.get_localized_string(30992), 'color std bold'), thumbnail=support.thumb(), page=page, records=recordlist))
         elif len(itemlist) >= 20:
-            itemlist.append(item.clone(action='peliculas',title=support.typo(support.config.get_localized_string(30992), 'color kod bold'), thumbnail=support.thumb(), records=[], page=page + 1))
+            itemlist.append(item.clone(action='peliculas',title=support.typo(support.config.get_localized_string(30992), 'color std bold'), thumbnail=support.thumb(), records=[], page=page + 1))
 
     support.tmdb.set_infoLabels_itemlist(itemlist, seekTmdb=True)
     support.check_trakt(itemlist)
@@ -185,7 +185,7 @@ def makeItem(n, it, item):
     logger.debug(it)
     title = it['name']
     lang = 'Sub-ITA' if it.get('sub_ita', 0) == 1 else 'ITA'
-    itm = item.clone(title=support.typo(title,'bold') + support.typo(lang,'_ [] color kod bold'))
+    itm = item.clone(title=support.typo(title,'bold') + support.typo(lang,'_ [] color std bold'))
     itm.contentType = it['type'].replace('tv', 'tvshow')
     itm.language = lang
     if it['last_air_date']:
