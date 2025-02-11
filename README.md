@@ -1,5 +1,6 @@
 # Stream4Me
-### Un fork italiano di [Alfa](https://github.com/alfa-addon)
+Un addon di terze parti per Kodi che consente di cercare e guardare contenuti presenti nel web
+### fork italiano di [Alfa](https://github.com/alfa-addon)
 
 Installazione: https://stream4me.github.io/#download
 
