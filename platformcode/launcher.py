@@ -144,6 +144,19 @@ def run(item=None):
             tmdb.clean_cache()
             platformtools.dialog_notification(config.get_localized_string(20000), config.get_localized_string(60011), time=2000, sound=False)
 
+        elif item.action == "migrate":
+            import os
+
+            kodpath = os.path.relpath(os.path.join(config.get_data_path(), "../plugin.video.kod"))
+            for root, folders, files in filetools.walk(kodpath):
+                for f in files:
+                    path_f = filetools.join(root, f)
+                    if f.endswith('.xml') or f.endswith('.json') or f.endswith('.strm') or f.endswith('.nfo'):
+                        content = filetools.read(path_f)
+                        filetools.write(path_f, content.replace('plugin.video.kod', 'plugin.video.s4me'))
+
+            filetools.rmdirtree(config.get_data_path())
+            filetools.rename(kodpath, 'plugin.video.s4me')
         ################################################
 
         # For all other actions
