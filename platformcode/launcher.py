@@ -146,17 +146,25 @@ def run(item=None):
 
         elif item.action == "migrate":
             import os
-
+            sel = platformtools.dialog_select("Sono stati rilevati dati di KoD, che vuoi fare?", [
+                "Migra (sovrascriverà impostazioni e videoteca di S4Me",
+                "Elimina (rimuove le ultime tracce di KoD, inizierai da capo)"
+            ])
             kodpath = os.path.relpath(os.path.join(config.get_data_path(), "../plugin.video.kod"))
-            for root, folders, files in filetools.walk(kodpath):
-                for f in files:
-                    path_f = filetools.join(root, f)
-                    if f.endswith('.xml') or f.endswith('.json') or f.endswith('.strm') or f.endswith('.nfo'):
-                        content = filetools.read(path_f)
-                        filetools.write(path_f, content.replace('plugin.video.kod', 'plugin.video.s4me'))
 
-            filetools.rmdirtree(config.get_data_path())
-            filetools.rename(kodpath, 'plugin.video.s4me')
+            if sel == 0:
+                for root, folders, files in filetools.walk(kodpath):
+                    for f in files:
+                        path_f = filetools.join(root, f)
+                        if f.endswith('.xml') or f.endswith('.json') or f.endswith('.strm') or f.endswith('.nfo'):
+                            content = filetools.read(path_f)
+                            filetools.write(path_f, content.replace('plugin.video.kod', 'plugin.video.s4me'))
+
+                filetools.rmdirtree(config.get_data_path())
+                filetools.rename(kodpath, 'plugin.video.s4me')
+            elif sel == 1:
+                filetools.rmdirtree(kodpath)
+
         ################################################
 
         # For all other actions
