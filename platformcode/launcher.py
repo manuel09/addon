@@ -156,9 +156,16 @@ def run(item=None):
             s4mepath = os.path.relpath(os.path.join(config.get_data_path(), "../plugin.video.s4me"))
 
             if sel == 0:
-                progress = platformtools.dialog_progress('Migrazione KoD -> S4Me',
-                                                            '')
+                progress = platformtools.dialog_progress('Migrazione KoD -> S4Me','')
+                # chiudo db.sqlite
+                from core import db
+                db.close()
+                xbmc.executeJSONRPC(
+                    '{"jsonrpc": "2.0", "id":1, "method": "Addons.SetAddonEnabled", "params": { "addonid": "plugin.video.s4me", "enabled": false }}')
+                empty = False
                 for root, folders, files in filetools.walk(kodpath):
+                    if not files:
+                        empty = True
                     for f in files:
                         progress.update(0,f)
                         path_f = filetools.join(root, f)
@@ -166,11 +173,14 @@ def run(item=None):
                             content = filetools.read(path_f)
                             filetools.write(path_f, content.replace('plugin.video.kod', 'plugin.video.s4me'))
 
-                if os.path.basename(os.path.dirname(config.get_data_path())) == 'plugin.video.s4me': # solo se l'addon si trova veramente in .s4me
-                    filetools.rmdirtree(config.get_data_path())
-                else: #altrimenti devo rinominare in addons/
-                    filetools.rename(config.get_runtime_path(), 'plugin.video.s4me')
-                filetools.rename(kodpath, 'plugin.video.s4me')
+                if empty:
+                    filetools.rmdir(kodpath)
+                else:
+                    if os.path.basename(os.path.dirname(config.get_data_path())) == 'plugin.video.s4me': # solo se l'addon si trova veramente in .s4me
+                        filetools.rmdirtree(config.get_data_path())
+                    else: #altrimenti devo rinominare in addons/
+                        filetools.rename(config.get_runtime_path(), 'plugin.video.s4me')
+                    filetools.rename(kodpath, 'plugin.video.s4me')
 
                 progress.update(0, 'videoteca')
                 xbmc_videolibrary.update_sources(old=config.get_setting('videolibrarypath').replace('plugin.video.s4me', 'plugin.video.kod'))
@@ -178,13 +188,14 @@ def run(item=None):
                 xbmc_videolibrary.update_db(kodpath, s4mepath, config.get_setting('folder_movies'),config.get_setting('folder_movies'),
                                             config.get_setting('folder_tvshows'),config.get_setting('folder_tvshows'), progress)
                 # progress.close() non necessario
+                xbmc.executeJSONRPC(
+                    '{"jsonrpc": "2.0", "id":1, "method": "Addons.SetAddonEnabled", "params": { "addonid": "plugin.video.s4me", "enabled": true }}')
             elif sel == 1:
                 if os.path.basename(os.path.dirname(config.get_data_path())) == 'plugin.video.s4me': # solo se l'addon si trova veramente in .s4me
                     filetools.rmdirtree(kodpath)
                 else:
                     filetools.rename(config.get_runtime_path(), 'plugin.video.s4me')
                 xbmc_videolibrary.update_sources(old=config.get_setting('videolibrarypath'))
-
 
             platformtools.itemlist_refresh()
 
