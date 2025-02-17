@@ -167,7 +167,7 @@ def run(item=None):
                     if not files:
                         empty = True
                     for f in files:
-		        empty = False
+                        empty = False
                         progress.update(0,f)
                         path_f = filetools.join(root, f)
                         if f.endswith('.xml') or f.endswith('.json') or f.endswith('.strm') or f.endswith('.nfo'):
