@@ -162,10 +162,8 @@ def run(item=None):
                 db.close()
                 xbmc.executeJSONRPC(
                     '{"jsonrpc": "2.0", "id":1, "method": "Addons.SetAddonEnabled", "params": { "addonid": "plugin.video.s4me", "enabled": false }}')
-                empty = False
+                empty = True
                 for root, folders, files in filetools.walk(kodpath):
-                    if not files:
-                        empty = True
                     for f in files:
                         empty = False
                         progress.update(0,f)
@@ -173,7 +171,8 @@ def run(item=None):
                         if f.endswith('.xml') or f.endswith('.json') or f.endswith('.strm') or f.endswith('.nfo'):
                             content = filetools.read(path_f)
                             filetools.write(path_f, content.replace('plugin.video.kod', 'plugin.video.s4me'))
-
+                from core.support import dbg
+                dbg()
                 if empty:
                     filetools.rmdir(kodpath)
                 else:
