@@ -152,8 +152,8 @@ def run(item=None):
                 "Migra (sovrascriverà impostazioni e videoteca di S4Me",
                 "Elimina (rimuove le ultime tracce di KoD, inizierai da capo)"
             ])
-            kodpath = os.path.relpath(os.path.join(config.get_data_path(), "../plugin.video.kod"))
-            s4mepath = os.path.relpath(os.path.join(config.get_data_path(), "../plugin.video.s4me"))
+            kodpath = os.path.abspath(os.path.join(config.get_data_path(), "../plugin.video.kod"))
+            s4mepath = os.path.abspath(os.path.join(config.get_data_path(), "../plugin.video.s4me"))
 
             if sel == 0:
                 progress = platformtools.dialog_progress('Migrazione KoD -> S4Me','')
@@ -171,8 +171,6 @@ def run(item=None):
                         if f.endswith('.xml') or f.endswith('.json') or f.endswith('.strm') or f.endswith('.nfo'):
                             content = filetools.read(path_f)
                             filetools.write(path_f, content.replace('plugin.video.kod', 'plugin.video.s4me'))
-                from core.support import dbg
-                dbg()
                 if empty:
                     filetools.rmdir(kodpath)
                 else:
@@ -190,6 +188,7 @@ def run(item=None):
                 # progress.close() non necessario
                 xbmc.executeJSONRPC(
                     '{"jsonrpc": "2.0", "id":1, "method": "Addons.SetAddonEnabled", "params": { "addonid": "plugin.video.s4me", "enabled": true }}')
+                platformtools.dialog_ok('Migrazione completata', "Riavvia kodi per sicurezza, se dovessi avere problemi è consigliato di reinstallare eliminando i dati in modo da partire puliti")
             elif sel == 1:
                 if os.path.basename(os.path.dirname(config.get_data_path())) == 'plugin.video.s4me': # solo se l'addon si trova veramente in .s4me
                     filetools.rmdirtree(kodpath)
