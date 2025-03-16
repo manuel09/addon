@@ -237,14 +237,13 @@ def episodios(item):
         patron = r'<a href="(?P<url>[^"]+)"[^>]+data-bg="(?P<thumb>[^"]+)".*?</a>.*?<h4 class="news-title">\s*<a [^>]*>(?P<title>[^<]+)</a>.*?<div class="news-descrizione">\s*(?P<plot>[^<]+)\s*<'
     else:
         if len(item.url.split('www.la7.it')[-1].strip('/').split("/")) == 1:
-            match = support.match(html_content, patron=r'<div class="testo">.*?</div>')
-            plot = match.matches[0][0] if match.matches else ""
-            if plot:
-                # Replace tags with newline
-                text = plot.replace('<', '\n<').replace('>', '>\n')
-                text = ''.join(line for line in text.splitlines() if not line.startswith('<'))
-                # Collapse multiple newlines and remove leading/trailing ones
-                plot = '\n'.join(line for line in text.splitlines() if line).strip('\n')
+            
+            match = support.match(html_content, patron=r'page-taxonomy-term-(\d+)')
+            tid = match.matches[0] if match.matches else ""
+            if tid:
+                data = json.loads(httptools.downloadpage(f"https://www.la7.it/appla7/service_propertysmarttv?s=hbbtv&field_property_tid={tid}").data)
+                if data and isinstance(data, list):  # Ensure data is a non-empty list
+                    plot = html.unescape(data[0].get("testo", ""))
             else:
                 plot = ""
 
@@ -255,7 +254,11 @@ def episodios(item):
             result_dict = {text: href for href, text in match.matches}
             for k,v in result_dict.items():
                 if(len(v.strip('/').split("/")) > 1):
-                    v = f'{host}{v}'
+                    if not v.startswith('/') and not v.startswith('https://www.la7.it'):
+                        continue
+                    else:
+                        v = f'{host}{v}'
+
                     new_item = item.clone(
                             title=support.typo(k, 'bold'),
                             data='',
@@ -266,18 +269,25 @@ def episodios(item):
                             fanart=fanart
                         )
                     itemlist.append(new_item)
-            return itemlist
-        else:
-            patron = r'<div class="[^"]*">.*?<a href="(?P<url>[^"]+)">.*?data-background-image="(?P<image>//[^"]+)"[^>]*>.*?<div class="title[^"]*">\s*(?P<title>[^<]+)\s*</div>'
-            html_content = html_content.split('<div class="view-content clearfix">')
 
-        if "?page=" not in item.url: # if first page check for la settimana
-            match = support.match(html_content[0], patron=r'<div class="item">.*?<a href="(?P<url>[^"]+)">.*?data-background-image="(?P<image>//[^"]+)"[^>]*>.*?<div class="title[^"]*">\s*(?P<title>[^<]+)\s*</div>')
+            patron = r'<div class="item.*?"> <a href="(?P<url>[^"]+)"><div class="holder-bg">.*?data-background-image="(?P<image>(?:https?:)?//[^"]+)".*?<div class="(?:title|occhiello)[^"]*">\s*(?P<title>[^<]+)\s*</div>'
+            match = support.match(html_content.split('<div class="subcontent">')[-1], patron=patron)
             matches.extend(match.matches)
-        html_content = html_content[-1]
+        else:
+            html_content = html_content.split('<div class="main-content-node">')[-1].split('<div class="right">')[0]
 
-    match = support.match(html_content, patron=patron)
-    matches.extend(match.matches)
+            # split on hidden pager and check what comes before it
+            html_content = html_content.split('<div class="view-content clearfix">')
+            if len(html_content) > 1:
+                patron = r'<div class="[^"]*">.*?<a href="(?P<url>[^"]+)">.*?data-background-image="(?P<image>(?:https?:)?//[^"]+)"[^>]*>.*?<div class="title[^"]*">\s*(?P<title>[^<]+)\s*</div>'
+                match = support.match(html_content[0], patron=patron)
+                matches.extend(match.matches)
+
+            # and after it
+            html_content = html_content[-1]
+            patron = r'<div class="[^"]*">.*?<a href="(?P<url>[^"]+)">.*?data-background-image="(?P<image>(?:https?:)?//[^"]+)"[^>]*>.*?<div class="title[^"]*">\s*(?P<title>[^<]+)\s*</div>'
+            match = support.match(html_content, patron=patron)
+            matches.extend(match.matches)
 
     visited = set()
     def itInfo(n, key, item):
@@ -309,12 +319,13 @@ def episodios(item):
 
         return it
 
+    original_length = len(itemlist)
     with futures.ThreadPoolExecutor() as executor:
         itlist = [executor.submit(itInfo, n, it, item) for n, it in enumerate(matches)]
         for res in futures.as_completed(itlist):
             if res.result():
                 itemlist.append(res.result())
-    itemlist.sort(key=lambda it: it.order)
+    itemlist[original_length:] = sorted(itemlist[original_length:], key=lambda it: it.order)
 
     match = support.match(html_content, patron=r'<li class="pager-next"><a href="(.*?)">›</a></li>')
     if match.matches:
