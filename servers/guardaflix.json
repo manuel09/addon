@@ -1,0 +1,13 @@
+{
+  "name": "Guardaflix",
+  "host": "guardaflix.homes",
+  "type": "host",
+  "version": 1,
+  "icon": "https://guardaflix.homes/favicon.ico",
+  "description": "Server per estrarre video da guardaflix.homes",
+  "urls": [
+    "https?://guardaflix\\.homes/.+"
+  ],
+  "dependencies": [],
+  "priority": 10
+}
