@@ -36,7 +36,7 @@
     <platform>all</platform>
     <license>GNU GPL v3</license>
     <website>https://stream4me.github.io/</website>
-    <source>https://github.com/stream4me/addon</source>
+    <source>https://github.com/manuel09/addon</source>
   </extension>
   <extension point="xbmc.service" library="service.py" start="login|startup">
   </extension>
